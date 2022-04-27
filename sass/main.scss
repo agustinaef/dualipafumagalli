@@ -1,5 +1,18 @@
 $colorDeFuente: #e7be81;
 
+/* mapa */ 
+$estilos: (
+  color: #ecd0a4,
+  tFuente: 60px,
+);
+
+/* mixin */ 
+@mixin display-wrap {
+	display: flex;
+  flex-wrap: wrap;
+}
+
+
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Merriweather+Sans:wght@500&family=Pacifico&family=Smooch+Sans:wght@600&family=Syne+Mono&family=Yellowtail&display=swap");
 
 * {
@@ -178,7 +191,9 @@ input[type="radio"] {
   gap: 1.5rem;
 }
 
-.form_btn > input {
+/* extend */ 
+
+.reset_btn > input {
   background: linear-gradient(0deg, $colorDeFuente 0%, #fce4b7 100%);
   font-weight: 500;
   color: #000000;
@@ -189,10 +204,23 @@ input[type="radio"] {
   margin: 20px;
 }
 
-.form_btn > input:hover {
+.submit_btn > input {
+	@extend .reset_btn;
+	background: linear-gradient(270deg, #ffbc51 0%, #e7be81 100%);		
+}
+
+/* extend */ 
+
+.reset_btn > input:hover {
   color: #b1700e;
   transition: 0.1s;
 }
+
+.submit_btn:hover{
+  color: #b1700e;
+  transition: 0.1s;
+}
+
 
 .footer {
   color: $colorDeFuente;
@@ -224,9 +252,8 @@ input[type="radio"] {
 }
 
 .merchandising {
-  display: flex;
+  @include display-wrap; 
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: auto;
@@ -252,8 +279,7 @@ input[type="radio"] {
 }
 
 .music {
-  display: flex;
-  flex-wrap: wrap;
+  @include display-wrap; 
   flex-direction: column;
   justify-content: left;
   width: 100%;
@@ -278,8 +304,8 @@ input[type="radio"] {
 
 .song {
   font-family: "Fjalla One", sans-serif;
-  font-size: 60px;
-  color: #ecd0a4;
+  font-size: map-get($estilos, tfuente);
+  color: map-get($estilos, color);
   bottom: 0;
   width: 100%;
   text-align: left;
@@ -318,8 +344,8 @@ input[type="radio"] {
 
 .tour2 {
   font-family: "Fjalla One", sans-serif;
-  font-size: 60px;
-  color: #e7be81;
+  font-size: map-get($estilos, tfuente);
+  color: map-get($estilos, color);
   -webkit-text-stroke: 1px #ca974a;
   text-shadow: 3px 3px #ffffff;
 }

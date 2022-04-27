@@ -18,6 +18,7 @@ html {
   max-width: 100%;
 }
 
+
 .grid_container {
   display: grid;
   /* grid-template-rows: auto;
